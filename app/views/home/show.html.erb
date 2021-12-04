@@ -1,0 +1,18 @@
+<html>
+	
+	<table style="width:100%">
+	  <tr>
+		<th>Web</th>
+		<th>About</th>
+	  </tr>
+	
+	  <tr>
+		<td>    <a href=<%=@show.web%>><%=@show.web%></a>     </td>
+		<td>   <%=@show.about%>   </td>
+	  </tr>
+	</table>
+	
+	<%=button_to "Back", home_index_path, method: "get"%>
+	<%=button_to "Recrawling", home_path(id: @show.id, url: @show.web), method: "put"%>
+	<%=button_to "Delete", home_path(id: @show.id), method: "delete"%>
+</html>

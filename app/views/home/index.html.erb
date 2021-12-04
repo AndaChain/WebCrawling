@@ -1,0 +1,35 @@
+<html>
+	
+	<h1> Hello there! </h1>
+	<%= form_with url: "/home", method: :post do |form| %>
+		
+		What Link do you want to Crawling?
+		<%= form.text_field :url%>
+		<%= form.submit "Add web"%>
+		<br></br>
+
+	<% end %>
+
+	
+<h3> History </h3>
+<table style="width:100%">
+  <tr>
+	<th>Delete</th>
+    <th>Link</th>
+    <th>About</th>
+    <th>Detail</th>
+    <th>Recrawling</th>
+  </tr>
+  
+  <% @show_all.each do |d|%>
+  <tr>
+	<td> <%=button_to "Delete", home_path(id: d.id), method: "delete"%> </td>
+    <td> <a href=<%=d.web%>><%=d.web%></a> </td>
+    <td> <%=d.about%> </td>
+    <td> <%=button_to "Detail", home_path(id: d.id), method: "get"%> </td>
+	<td> <%=button_to "Recrawling", home_path(id: d.id, url: d.web), method: "put"%> </td>
+  </tr>
+  <%end%>
+</table>
+	
+</html>
